@@ -68,6 +68,10 @@ namespace SwagLabClassLib
         
         [FindsBy(How= How.ClassName, Using="product_sort_container")]
         private IWebElement _sortdropdown;
+
+        //problemuser
+         [FindsBy(How= How.XPath, Using="//img[@alt='Sauce Labs Backpack']")]
+       private IWebElement _puserbackpackimage;
         
     
 
@@ -116,6 +120,16 @@ namespace SwagLabClassLib
         public void bikelightcart()
         {
         _bikelightcart.Click();
+        }
+
+        public string  puserbackpackimage()
+
+        {
+
+            string actualValue=_puserbackpackimage.GetAttribute("src");
+
+            return actualValue;
+
         }
 
         /*public void FleeceJacket()

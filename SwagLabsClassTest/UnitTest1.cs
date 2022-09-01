@@ -44,7 +44,7 @@ namespace SwagLabsClassTest
         }
 
          [TestMethod]
-
+         [Ignore]
         public void productpage(){
 
             LoginPage log =new LoginPage(driver);
@@ -97,7 +97,7 @@ namespace SwagLabsClassTest
         }
 
         [DataTestMethod]
-        
+         [Ignore]
         public void YourCartPage()
         {
             SwagLabsClassLib.YourCartPage YCpage =new SwagLabsClassLib.YourCartPage(driver);
@@ -105,7 +105,7 @@ namespace SwagLabsClassTest
         }
 
          [DataTestMethod]
-        
+         [Ignore]
          [DataRow("mitra","patra","50049")]
           
         public void CheckOut_(string Fname, string Lname, string Pin)
@@ -119,7 +119,7 @@ namespace SwagLabsClassTest
         }
 
            [DataTestMethod]
-        
+         [Ignore]
         public void BackHomePage()
         {
             SwagLabsClassLib.BackHomePage HPpage =new SwagLabsClassLib.BackHomePage(driver);
@@ -128,11 +128,62 @@ namespace SwagLabsClassTest
 
 
         [TestCleanup]
-        
+         [Ignore]
         public void Cleanup()
         {
             driver.Quit();
         }
+
+       [DataTestMethod]
+        [Ignore]
+        public void locked_out_user(){
+
+            LoginPage log =new LoginPage(driver);
+            log.username("locked_out_user");
+            log.password("secret_sauce");
+            log.loginbutton();
+
+            string actual4 =log.locked_out_user();
+            string expectedname4 ="Epic sadface: Sorry, this user has been locked out.";
+            Assert.AreEqual(expectedname4,actual4,"method fail");
+            log.locked_out_user();
+          
+        }
+        [DataTestMethod]
+         [Ignore]
+        public void problemuser(){
+
+            LoginPage log =new LoginPage(driver);
+            log.username("problem_user");
+            log.password("secret_sauce");
+            log.loginbutton();
+            SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+           string actualbackpackimg =products.puserbackpackimage();
+           string expectedbackpackimg = "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg";
+           Assert.AreEqual(expectedbackpackimg,actualbackpackimg,"problem user image doesnot match");
+
+
+        }
+
+          [DataTestMethod]
+
+        public void performance_glitch_user(){
+
+            LoginPage log =new LoginPage(driver);
+            log.username("performance_glitch_user");
+            log.password("secret_sauce");
+            log.loginbutton();
+            driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
+           SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+            Thread.Sleep(3000);
+            products.backpackcart();
+            products.bikelightcart();
+            products.cartlink();
+            Thread.Sleep(2000);
+
+        }    
+        
+       
     }
 }
 
