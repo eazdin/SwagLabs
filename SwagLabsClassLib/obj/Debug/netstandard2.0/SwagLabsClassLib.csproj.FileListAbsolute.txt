@@ -1,0 +1,9 @@
+C:\mitra c#\SwagLabs\SwagLabsClassLib\bin\Debug\netstandard2.0\SwagLabsClassLib.deps.json
+C:\mitra c#\SwagLabs\SwagLabsClassLib\bin\Debug\netstandard2.0\SwagLabsClassLib.dll
+C:\mitra c#\SwagLabs\SwagLabsClassLib\bin\Debug\netstandard2.0\SwagLabsClassLib.pdb
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.csprojAssemblyReference.cache
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.AssemblyInfoInputs.cache
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.AssemblyInfo.cs
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.csproj.CoreCompileInputs.cache
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.dll
+C:\mitra c#\SwagLabs\SwagLabsClassLib\obj\Debug\netstandard2.0\SwagLabsClassLib.pdb
