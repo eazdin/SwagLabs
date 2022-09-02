@@ -30,6 +30,12 @@ namespace SwagLabsClassLib
         [FindsBy(How= How.Id, Using="finish")]
         private IWebElement _Finish;
 
+         [FindsBy(How= How.XPath, Using="//div[contains(text(),'Sauce Labs Backpack')]")]
+        private IWebElement _SauceLabsBackpack;
+
+        [FindsBy(How= How.XPath, Using="//*[@id='item_0_title_link']")]
+        private IWebElement _SauceLabsBikeLight;
+
         public CheckOutPage (IWebDriver driver)
         {
           
@@ -63,6 +69,16 @@ namespace SwagLabsClassLib
 
             _Finish.Click();
         }
+
+        public string SauceLabsBackpack(){
+         string actual5 =  _SauceLabsBackpack.Text;
+          return actual5;
+         }
+
+         public string SauceLabsBikeLight(){
+         string actual6 =  _SauceLabsBikeLight.Text;
+          return actual6;
+         }
 
 
     }

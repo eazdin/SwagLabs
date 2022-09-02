@@ -44,7 +44,7 @@ namespace SwagLabsClassTest
         }
 
          [TestMethod]
-         [Ignore]
+         
         public void productpage(){
 
             LoginPage log =new LoginPage(driver);
@@ -105,7 +105,7 @@ namespace SwagLabsClassTest
         }
 
          [DataTestMethod]
-         [Ignore]
+         
          [DataRow("mitra","patra","50049")]
           
         public void CheckOut_(string Fname, string Lname, string Pin)
@@ -115,6 +115,17 @@ namespace SwagLabsClassTest
             COpage.LastName(Lname);
             COpage.PostalCode(Pin);
             COpage.Continue();
+             
+            string actual5 =COpage.SauceLabsBackpack();
+            string expectedname ="Sauce Labs Backpack";
+            Assert.AreEqual(expectedname,actual5,"method fail");
+            COpage.SauceLabsBackpack();
+
+            string actual6 =COpage.SauceLabsBikeLight();
+            string expectedname1 ="Sauce Labs Bike Light";
+            Assert.AreEqual(expectedname1,actual6,"method fail");
+            COpage.SauceLabsBikeLight();
+
             COpage.Finish();
         }
 
@@ -166,7 +177,7 @@ namespace SwagLabsClassTest
         }
 
           [DataTestMethod]
-
+           [Ignore]
         public void performance_glitch_user(){
 
             LoginPage log =new LoginPage(driver);
@@ -181,7 +192,20 @@ namespace SwagLabsClassTest
             products.cartlink();
             Thread.Sleep(2000);
 
-        }    
+        }  
+
+        [TestMethod]
+         [Ignore]
+        public void Dropdown(){
+             LoginPage log =new LoginPage(driver);
+            log.username("standard_user");
+            log.password("secret_sauce");
+            log.loginbutton();
+        SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+        Thread.Sleep(5000);
+        products.Dropdown();
+         Thread.Sleep(5000);
+        } 
         
        
     }

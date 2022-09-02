@@ -46,6 +46,10 @@ namespace SwagLabClassLib
         [FindsBy(How= How.Id, Using="add-to-cart-sauce-labs-bike-light")]
         private IWebElement _bikelightcart;
 
+        //Dropdown
+        [FindsBy(How= How.XPath, Using="//*[@id='header_container']/div[2]/div[2]/span/select")]
+        private IWebElement _Dropdown;
+
       //  [FindsBy(How= How.Id, Using="//*[@id='item_5_title_link']/div")]
        // private IWebElement _FleeceJacket;
 
@@ -125,10 +129,16 @@ namespace SwagLabClassLib
         public string  puserbackpackimage()
 
         {
+        string actualValue=_puserbackpackimage.GetAttribute("src");
+             return actualValue;
 
-            string actualValue=_puserbackpackimage.GetAttribute("src");
+        }
 
-            return actualValue;
+         public void Dropdown()
+        {
+        SelectElement productsfilter = new SelectElement((_Dropdown));
+        productsfilter.SelectByValue("hilo");
+
 
         }
 
