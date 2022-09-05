@@ -45,12 +45,6 @@ namespace SwagLabsClassLib
           return actual1;
          }
 
-         /*public string FleeceJacket(){
-         string actual2 =  _FleeceJacket.Text;
-          return actual2;
-         }*/
-
-
           public void CheckOut(){
 
         _CheckOut.Click();

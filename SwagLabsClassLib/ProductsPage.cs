@@ -50,11 +50,7 @@ namespace SwagLabClassLib
         [FindsBy(How= How.XPath, Using="//*[@id='header_container']/div[2]/div[2]/span/select")]
         private IWebElement _Dropdown;
 
-      //  [FindsBy(How= How.Id, Using="//*[@id='item_5_title_link']/div")]
-       // private IWebElement _FleeceJacket;
-
-      //  [FindsBy(How= How.XPath, Using="//*[@id='add-to-cart-sauce-labs-fleece-jacket']")]
-       // private IWebElement _Jacketcart;
+      
         
         public ProductsPage(IWebDriver driver)
         {
@@ -142,14 +138,6 @@ namespace SwagLabClassLib
 
         }
 
-        /*public void FleeceJacket()
-        {
-        _FleeceJacket.Click();
-        }
-
-         public void Jacketcart()
-        {
-        _Jacketcart.Click();
-        }*/
+       
     }
 }

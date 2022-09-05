@@ -29,7 +29,7 @@ namespace SwagLabsClassTest
         }
 
         [DataTestMethod]
-         [Ignore]
+        [Ignore]
         [DataRow("standard_user","secret_sauce")]
         [DataRow("locked_out_user","secret_sauce")]
         [DataRow("problem_user","secret_sauce")]
@@ -56,6 +56,7 @@ namespace SwagLabsClassTest
             products.backpackcart();
             products.bikelightcart();
             products.cartlink();
+            products.Dropdown();
             Thread.Sleep(2000);
             
             SwagLabsClassLib.YourCartPage YCpage =new SwagLabsClassLib.YourCartPage(driver);
@@ -71,15 +72,12 @@ namespace SwagLabsClassTest
             Assert.AreEqual(expectedname1,actual1,"method fail");
             YCpage.SauceLabsBikeLight();
 
-            /*string actual2 =YCpage.FleeceJacket();
-            string expectedname2 ="Sauce Labs Fleece Jacket";
-            Assert.AreEqual(expectedname2,actual2,"method fail");
-            YCpage.FleeceJacket();*/
+            
 
             YCpage.CheckOut();
             SwagLabsClassLib.CheckOutPage COpage =new SwagLabsClassLib.CheckOutPage(driver);
-             COpage.FirstName("mitra");
-             Thread.Sleep(2000);
+            COpage.FirstName("mitra");
+            Thread.Sleep(2000);
             COpage.LastName("patra");
             Thread.Sleep(2000);
             COpage.PostalCode("50049");
@@ -89,12 +87,14 @@ namespace SwagLabsClassTest
             COpage.Finish();
             Thread.Sleep(2000);
 
-             SwagLabsClassLib.BackHomePage HPpage =new SwagLabsClassLib.BackHomePage(driver);
+            SwagLabsClassLib.BackHomePage HPpage =new SwagLabsClassLib.BackHomePage(driver);
             Thread.Sleep(2000);
             HPpage.BackHome();
             Thread.Sleep(2000);
 
         }
+
+
 
         [DataTestMethod]
          [Ignore]
@@ -105,7 +105,7 @@ namespace SwagLabsClassTest
         }
 
          [DataTestMethod]
-         
+         [Ignore]
          [DataRow("mitra","patra","50049")]
           
         public void CheckOut_(string Fname, string Lname, string Pin)
@@ -139,14 +139,14 @@ namespace SwagLabsClassTest
 
 
         [TestCleanup]
-         [Ignore]
+         
         public void Cleanup()
         {
             driver.Quit();
         }
 
        [DataTestMethod]
-        [Ignore]
+        
         public void locked_out_user(){
 
             LoginPage log =new LoginPage(driver);
@@ -161,7 +161,7 @@ namespace SwagLabsClassTest
           
         }
         [DataTestMethod]
-         [Ignore]
+         
         public void problemuser(){
 
             LoginPage log =new LoginPage(driver);
@@ -171,13 +171,13 @@ namespace SwagLabsClassTest
             SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
            string actualbackpackimg =products.puserbackpackimage();
            string expectedbackpackimg = "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg";
-           Assert.AreEqual(expectedbackpackimg,actualbackpackimg,"problem user image doesnot match");
+           Assert.AreNotEqual(expectedbackpackimg,actualbackpackimg,"problem user image doesnot match");
 
 
         }
 
           [DataTestMethod]
-           [Ignore]
+           
         public void performance_glitch_user(){
 
             LoginPage log =new LoginPage(driver);
@@ -195,9 +195,9 @@ namespace SwagLabsClassTest
         }  
 
         [TestMethod]
-         [Ignore]
+        
         public void Dropdown(){
-             LoginPage log =new LoginPage(driver);
+            LoginPage log =new LoginPage(driver);
             log.username("standard_user");
             log.password("secret_sauce");
             log.loginbutton();
