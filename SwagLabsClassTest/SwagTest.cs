@@ -22,6 +22,8 @@ namespace SwagLabsClassTest
         public void start_Browser()
         {
             driver = new ChromeDriver (@"C:\mitra c#\WebDriver");
+            driver = new FirefoxDriver(@"C:\mitra c#\WebDriver");
+            driver = new EdgeDriver(@"C:\mitra c#\WebDriver");
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
@@ -29,16 +31,17 @@ namespace SwagLabsClassTest
         }
 
         [DataTestMethod]
-        [Ignore]
-        [DataRow("standard_user","secret_sauce")]
-        [DataRow("locked_out_user","secret_sauce")]
-        [DataRow("problem_user","secret_sauce")]
-        [DataRow("performance_glitch_user","secret_sauce")]
         
-        public void Login_(string user, string pass)
+       
+        [DataRow("FF","standard_user","secret_sauce")]
+        [DataRow("CH","locked_out_user","secret_sauce")]
+        [DataRow("MS","problem_user","secret_sauce")]
+        [DataRow("MS","performance_glitch_user","secret_sauce")]
+        
+        public void LoginDetails(string browser,string users, string pass)
         {
             LoginPage log =new LoginPage(driver);
-            log.username(user);
+            log.username(users);
             log.password(pass);
             log.loginbutton();
         }
@@ -51,16 +54,15 @@ namespace SwagLabsClassTest
             log.username("standard_user");
             log.password("secret_sauce");
             log.loginbutton();
-          SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
-            Thread.Sleep(3000);
+            SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+            
             products.backpackcart();
             products.bikelightcart();
             products.cartlink();
-            products.Dropdown();
-            Thread.Sleep(2000);
+            
             
             SwagLabsClassLib.YourCartPage YCpage =new SwagLabsClassLib.YourCartPage(driver);
-            Thread.Sleep(2000);
+            
             
             string actual =YCpage.SauceLabsBackpack();
             string expectedname ="Sauce Labs Backpack";
@@ -77,20 +79,20 @@ namespace SwagLabsClassTest
             YCpage.CheckOut();
             SwagLabsClassLib.CheckOutPage COpage =new SwagLabsClassLib.CheckOutPage(driver);
             COpage.FirstName("mitra");
-            Thread.Sleep(2000);
+            
             COpage.LastName("patra");
-            Thread.Sleep(2000);
+            
             COpage.PostalCode("50049");
-            Thread.Sleep(2000);
+            
             COpage.Continue();
-            Thread.Sleep(2000);
+            
             COpage.Finish();
-            Thread.Sleep(2000);
+            
 
             SwagLabsClassLib.BackHomePage HPpage =new SwagLabsClassLib.BackHomePage(driver);
-            Thread.Sleep(2000);
+            
             HPpage.BackHome();
-            Thread.Sleep(2000);
+            
 
         }
 
@@ -186,11 +188,11 @@ namespace SwagLabsClassTest
             log.loginbutton();
             driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
            SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
-            Thread.Sleep(3000);
+            
             products.backpackcart();
             products.bikelightcart();
             products.cartlink();
-            Thread.Sleep(2000);
+            
 
         }  
 
@@ -202,9 +204,9 @@ namespace SwagLabsClassTest
             log.password("secret_sauce");
             log.loginbutton();
         SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
-        Thread.Sleep(5000);
+        
         products.Dropdown();
-         Thread.Sleep(5000);
+         
         } 
         
        
