@@ -10,5 +10,7 @@
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0"/>
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="4.3.0"/>
     <PackageReference Include="Assert" Version="4.2.1"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0"/>
   </ItemGroup>
 </Project>

@@ -7,43 +7,46 @@ using OpenQA.Selenium.Edge;
 using System.Diagnostics;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+
 using SwagLabsClassLib;
 
 
 namespace SwagLabsClassTest
 {
     [TestClass]
-    public class UnitTest1
+    public class SwagTest
 
      
     {
         IWebDriver driver;
         [TestInitialize]
-        public void start_Browser()
+
+        public void startBrowser()
+
         {
-            driver = new ChromeDriver (@"C:\mitra c#\WebDriver");
-            driver = new FirefoxDriver(@"C:\mitra c#\WebDriver");
-            driver = new EdgeDriver(@"C:\mitra c#\WebDriver");
-            driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+           SwagLabsClassLib.MultiBrowsers Browser = new SwagLabsClassLib.MultiBrowsers(driver);
+            Browser.Browser("CH");
+
+            driver = new ChromeDriver(@"C:\mitra c#\WebDriver");
+            driver.Navigate().GoToUrl(SwagLabsClassLib.Program.SwagLabUrl);
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
-            
-        }
+            } 
 
-        [DataTestMethod]
-        
+         public void LoginDetails(string users, string pass)
        
-        [DataRow("FF","standard_user","secret_sauce")]
-        [DataRow("CH","locked_out_user","secret_sauce")]
-        [DataRow("MS","problem_user","secret_sauce")]
-        [DataRow("MS","performance_glitch_user","secret_sauce")]
-        
-        public void LoginDetails(string browser,string users, string pass)
         {
             LoginPage log =new LoginPage(driver);
             log.username(users);
             log.password(pass);
             log.loginbutton();
+
+            string actualPageTitle =log.pagetitle();
+            string expectedPageTitle ="Swag Labs";
+            Assert.AreEqual(expectedPageTitle,actualPageTitle,"Title Not Match");
+        
+
+
         }
 
          [TestMethod]
@@ -54,6 +57,8 @@ namespace SwagLabsClassTest
             log.username("standard_user");
             log.password("secret_sauce");
             log.loginbutton();
+           
+           
             SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
             
             products.backpackcart();
@@ -74,27 +79,20 @@ namespace SwagLabsClassTest
             Assert.AreEqual(expectedname1,actual1,"method fail");
             YCpage.SauceLabsBikeLight();
 
-            
-
             YCpage.CheckOut();
+
             SwagLabsClassLib.CheckOutPage COpage =new SwagLabsClassLib.CheckOutPage(driver);
             COpage.FirstName("mitra");
-            
             COpage.LastName("patra");
-            
             COpage.PostalCode("50049");
-            
             COpage.Continue();
-            
             COpage.Finish();
             
 
             SwagLabsClassLib.BackHomePage HPpage =new SwagLabsClassLib.BackHomePage(driver);
-            
             HPpage.BackHome();
             
-
-        }
+             }
 
 
 
@@ -140,54 +138,47 @@ namespace SwagLabsClassTest
         }
 
 
-        [TestCleanup]
-         
-        public void Cleanup()
-        {
-            driver.Quit();
-        }
-
-       [DataTestMethod]
+         [TestMethod]
         
         public void locked_out_user(){
 
             LoginPage log =new LoginPage(driver);
-            log.username("locked_out_user");
-            log.password("secret_sauce");
+            log.username(SwagLabsClassLib.Program.lockedoutuser);
+            log.password(SwagLabsClassLib.Program.password);
             log.loginbutton();
 
             string actual4 =log.locked_out_user();
             string expectedname4 ="Epic sadface: Sorry, this user has been locked out.";
-            Assert.AreEqual(expectedname4,actual4,"method fail");
+            Assert.AreNotEqual(expectedname4,actual4,"method fail");
             log.locked_out_user();
           
         }
-        [DataTestMethod]
+        [TestMethod]
          
         public void problemuser(){
 
             LoginPage log =new LoginPage(driver);
-            log.username("problem_user");
-            log.password("secret_sauce");
+            log.username(SwagLabsClassLib.Program.problemuser);
+            log.password(SwagLabsClassLib.Program.password);
             log.loginbutton();
-            SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
-           string actualbackpackimg =products.puserbackpackimage();
-           string expectedbackpackimg = "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg";
-           Assert.AreNotEqual(expectedbackpackimg,actualbackpackimg,"problem user image doesnot match");
+        SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+            string actualbackpackimg =products.puserbackpackimage();
+            string expectedbackpackimg = "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg";
+            Assert.AreNotEqual(expectedbackpackimg,actualbackpackimg,"problem user image doesnot match");
 
 
         }
 
-          [DataTestMethod]
+          [TestMethod]
            
         public void performance_glitch_user(){
 
             LoginPage log =new LoginPage(driver);
-            log.username("performance_glitch_user");
-            log.password("secret_sauce");
+            log.username(SwagLabsClassLib.Program.performanceglitchuser);
+            log.password(SwagLabsClassLib.Program.password);
             log.loginbutton();
             driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
-           SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
+        SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
             
             products.backpackcart();
             products.bikelightcart();
@@ -205,11 +196,17 @@ namespace SwagLabsClassTest
             log.loginbutton();
         SwagLabClassLib.ProductsPage products =new SwagLabClassLib.ProductsPage(driver);
         
-        products.Dropdown();
+            products.Dropdown();
          
         } 
-        
-       
+
+        [TestCleanup]
+         
+        public void Cleanup()
+        {
+            driver.Quit();
+        }
     }
+        
 }
 

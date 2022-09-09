@@ -1,0 +1,19 @@
+{
+   "ApplicationUnderTest":{
+   "Url":"https://www.saucedemo.com/"
+},
+
+    "ConnectionStrings":{
+    "URL":"https://www.saucedemo.com/",
+    "Browser":"chromeBrowser",
+    "username":"standard_user",
+    "lockedoutuser":"locked_out_user",
+    "problemuser":"problem_user",
+    "performanceglitchuser":"performance_glitch_user",
+    "password":"secret_sauce",
+    "FirstName":"Mitra",
+    "LastName":"Patra",
+    "Pincode":"50049"
+
+     }
+    }

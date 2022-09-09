@@ -54,13 +54,18 @@ namespace SwagLabsClassLib
 
          public void loginbutton(){
 
-            _loginbutton.Click();
+          _loginbutton.Click();
         }
 
 
         public string locked_out_user(){
          string actual4 =  _Locked_out_user.Text;
           return actual4;
+        }
+
+        public string pagetitle(){
+
+          return _driver.Title;
         }
 
         
